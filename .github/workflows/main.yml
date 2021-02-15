@@ -65,6 +65,7 @@ jobs:
         run: | 
           cd $GITHUB_WORKSPACE
           for f in **/*.ino ; do
+          echo $f
           arduino-cli compile -b arduino:avr:uno $f
           done
 #          
