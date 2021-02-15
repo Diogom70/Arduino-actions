@@ -37,6 +37,7 @@ jobs:
         with:
           path: ./src/
           compliance: permissive
+          project-type: sketch
            
       #Executa Arduino CLI
       - name: A Preparar Arduino CLI
