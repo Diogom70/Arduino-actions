@@ -53,7 +53,8 @@ jobs:
       - name: Instala bibliotecas da pasta bibliotecas
         run: |
           mkdir -p "$HOME/Arduino/libraries"
-          ln -s "$PWD/bibliotecas" "$HOME/Arduino/libraries/."      
+          #ln -s "$PWD/bibliotecas" "$HOME/Arduino/libraries/."    
+          ln -s "$PWD" "$HOME/Arduino/libraries/."             
   
       # Finally, we compile the sketch, using the FQBN that was set
       # in the build matrix.
