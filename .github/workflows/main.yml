@@ -32,12 +32,13 @@ jobs:
       - uses: actions/checkout@v2
 
       #Executa o Lint
-#      - name: Executa a verificacao de codigo
-#        uses: arduino/arduino-lint-action@v1
-#        with:
-#          path: ./src/
-#          compliance: permissive
-#          project-type: sketch
+      - name: Executa a verificacao de codigo
+        uses: arduino/arduino-lint-action@v1
+        with:
+          path: ./
+          compliance: permissive
+          project-type: sketch
+          recursive: true
            
       #Executa Arduino CLI
       - name: A Preparar Arduino CLI
@@ -69,7 +70,6 @@ jobs:
 # Compile all *.ino files for the Arduino Uno
       - name: Compilar Sketch independente nome ficheiro
         run: | 
-          cd $GITHUB_WORKSPACE
           for f in **/*.ino ; do
           echo $f
           arduino-cli compile -b arduino:avr:uno $f
