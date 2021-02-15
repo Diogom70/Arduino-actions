@@ -32,8 +32,9 @@ jobs:
       #Executa o Lint
       #- name: arduino/arduino-lint-action
       #  uses: arduino/arduino-lint-action@v1.0.0
+      
       #Executa Arduino CLI
-      - name: Setup Arduino CLI
+      - name: A Preparar Arduino CLI
         uses: arduino/setup-arduino-cli@v1.1.1
 
 # We then install the platform, which one will be determined
@@ -43,10 +44,17 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install arduino:avr
           
-      - name: Instala bibliotecas
+      # Instala bibliotecas do Arduino Base   
+      #- name: Instala bibliotecas
+      #  run: |
+      #    arduino-cli lib install "Servo"
+       
+  #Copia as bibliotecas da pasta bibliotecas
+      - name: Instala bibliotecas da pasta bibliotecas
         run: |
-          arduino-cli lib install "Servo"
-          
+          mkdir -p "$HOME/Arduino/libraries"
+          ln -s "$PWD/bibliotecas" "$HOME/Arduino/libraries/."      
+  
       # Finally, we compile the sketch, using the FQBN that was set
       # in the build matrix.
       - name: Compilar Sketch
