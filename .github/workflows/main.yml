@@ -32,10 +32,10 @@ jobs:
       - uses: actions/checkout@v2
 
       #Executa o Lint
-      - name: Executa o Lint / Verificacao de codigo
-        uses: arduino/arduino-lint-action@v1.0.0
-         with:
-           compliance: permissive
+      - name: Executa a verificacao de codigo
+        uses: arduino/arduino-lint-action@v1
+#         with:
+#           compliance: permissive
            
       #Executa Arduino CLI
       - name: A Preparar Arduino CLI
