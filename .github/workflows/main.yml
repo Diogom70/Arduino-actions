@@ -63,7 +63,8 @@ jobs:
 # Compile all *.ino files for the Arduino Uno
       - name: Compilar Sketch independente nome ficheiro
         run: | 
-          for f in $GITHUB_WORKSPACE/*.ino ; do
+          cd $GITHUB_WORKSPACE
+          for f in **/*.ino ; do
           arduino-cli compile -b arduino:avr:uno $f
 
           done
