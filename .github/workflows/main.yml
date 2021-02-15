@@ -34,8 +34,9 @@ jobs:
       #Executa o Lint
       - name: Executa a verificacao de codigo
         uses: arduino/arduino-lint-action@v1
-#         with:
-#           compliance: permissive
+        with:
+          path: ./src/
+          compliance: permissive
            
       #Executa Arduino CLI
       - name: A Preparar Arduino CLI
