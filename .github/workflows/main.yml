@@ -63,9 +63,13 @@ jobs:
 # Compile all *.ino files for the Arduino Uno
       - name: Compilar Sketch independente nome ficheiro
         run: | 
-          for f in **/*.ino ; do
+          for f in scr/*.ino ; do
           arduino-cli compile -b arduino:avr:uno $f
           arduino-cli compile -b arduino:samd:arduino_zero_native $f
           done
           
-          
+      - name: Compilar Sketch2
+        run: arduino-cli compile --fqbn arduino:avr:uno ./src/*.ino
+      - name: Compilar Sketch3
+        run: arduino-cli compile --fqbn arduino:avr:uno ./src/*-src.ino            
+            
