@@ -38,12 +38,16 @@ jobs:
 
 # We then install the platform, which one will be determined
       # dynamically by the build matrix.
-      - name: Install platform
+      - name: Instala platforma
         run: |
           arduino-cli core update-index
           arduino-cli core install arduino:avr
- 
+          
+      - name: Instala bibliotecas
+        run: |
+          arduino-cli lib install "Servo"
+          
       # Finally, we compile the sketch, using the FQBN that was set
       # in the build matrix.
-      - name: Compile Sketch
+      - name: Compilar Sketch
         run: arduino-cli compile --fqbn arduino:avr:uno ./src
