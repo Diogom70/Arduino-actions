@@ -54,9 +54,18 @@ jobs:
         run: |
           mkdir -p "$HOME/Arduino/libraries"
           ln -s "$PWD/bibliotecas" "$HOME/Arduino/libraries/."    
-#          ln -s "$PWD" "$HOME/Arduino/libraries/."             
+         
   
       # Finally, we compile the sketch, using the FQBN that was set
       # in the build matrix.
-      - name: Compilar Sketch
-        run: arduino-cli compile --fqbn arduino:avr:uno ./src
+      #- name: Compilar Sketch
+      #  run: arduino-cli compile --fqbn arduino:avr:uno ./src
+# Compile all *.ino files for the Arduino Uno
+      - name: Compilar Sketch independente nome ficheiro
+        run: | 
+          for f in **/*.ino ; do
+          arduino-cli compile -b arduino:avr:uno $f
+          arduino-cli compile -b arduino:samd:arduino_zero_native $f
+          done
+          
+          
